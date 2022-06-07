@@ -73,6 +73,12 @@ int main() {
 				case 18: // S
 					speed = Speed::SLOW;
 					break;
+				case 71: // left
+					direction = Direction::RIGHT_TO_LEFT;
+					break;
+				case 72: // right
+					direction = Direction::LEFT_TO_RIGHT;
+					break;
 				}
 				if (key == 55) { speed = Speed::ADJ; diff = diff * 2; }
 				if (key == 56) { speed = Speed::ADJ; diff = diff * 0.5; }
@@ -81,20 +87,7 @@ int main() {
 		window.clear();
 		window.draw(text);
 		//window.draw(circle); // Draw the circle full screen
-		window.display();
-
-		sf::Vector2f Position = text.getPosition();
-		if (Position.x >= window.getSize().x || Position.x < 0.0) {
-			counter++;
-			if (counter % 2 == 1) {
-				text.setPosition((float)window.getSize().x, 0);
-				direction = Direction::RIGHT_TO_LEFT;
-			}
-			else {
-				text.setPosition(0, 0);
-				direction = Direction::LEFT_TO_RIGHT;
-			}
-		}
+		window.display();		
 
 		// switch for direction and speed	
 		switch (speed) {

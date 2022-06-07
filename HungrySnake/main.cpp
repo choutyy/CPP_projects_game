@@ -16,7 +16,7 @@ int main() {
 	sf::Font font;
 	if (font.loadFromFile("msjh.ttc") == false) { return EXIT_FAILURE; }
 	sf::Text text("Eaten Food #:", font);
-	sf::Text endText("You Died!\nPresee any key to close window", font, 50);
+	sf::Text endText("You Died!\nPresee any key to restart the game", font, 50);
 	endText.setPosition(
 		unsigned int((fieldSize.x* blockSize.x)/4.0f),
 		unsigned int((fieldSize.y* blockSize.y)/2.5f));
@@ -63,7 +63,11 @@ int main() {
 						direction = Direction::RIGHT;
 						break;
 				}
-				if (isDead) { window.close(); } // press any key to close the game window
+				if (isDead) {
+					//	isDead = false;
+					std::cout << key << std::endl;;
+				}
+				// press any key to close the game window
 			}
 		}
 
